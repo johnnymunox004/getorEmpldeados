@@ -1,0 +1,57 @@
+<%- include("partials/partials.dash.header.ejs", { datos : datos }) %>
+
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border bg-primary text-default">
+            <h3 class="box-title">Crear Cliente</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title=""
+                    data-original-title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title=""
+                    data-original-title="Remove">
+                    <i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- //columna 1 -->
+                    <div class="form-group">
+                        <label for="nombresClient">Nombre</label>
+                        <input type="text" class="form-control" id="nombresClient" placeholder="Ingrese el Nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="direccionClient">Dirección</label>
+                        <input type="text" class="form-control" id="direccionClient" placeholder="Ingrese la Dirección">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefonoClient">Teléfono</label>
+                        <input type="text" class="form-control" id="telefonoClient" placeholder="Ingrese el Teléfono">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- //columna 2 // -->
+                    <div class="form-group">
+                        <label for="correoClient">Correo</label>
+                        <input type="email" class="form-control" id="correoClient" placeholder="Ingrese su Correo">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-app" onclick="GuardarCliente()">
+                <i class="fa fa-save"></i> Guardar
+            </button>
+        </div>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer">
+    </div>
+    <div class="box-footer">
+    </div>
+    <!-- /.box-footer-->
+    </div>
+    <!-- /.box -->
+</section>
+
+<%- include("partials/partials.dash.footer.ejs") %>
