@@ -30,24 +30,40 @@ async function login(req, res) {
   }
 }
 
-// Función de registro
 async function register(req, res) {
-  const { email, password, nombre } = req.body;
+  const {
+    nombre,
+    email,
+    password,
+    rol = 'Usuario', // Default role if not provided
+    edad,
+    dept,
+    sexo,
+    file,
+    telefono,
+    process,
+  } = req.body;
 
   try {
     const existingUser = await collection.findOne({ email });
     if (existingUser) {
-      return res.status(409).send('User already exists');
+      return res.status(409).json({ message: 'User already exists' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = {
-      email,
       nombre,
+      email,
       password: hashedPassword,
-      rol: 'Usuario', // Define el rol por defecto
-      date_create: new Date()
+      rol,
+      edad,
+      dept,
+      sexo,
+      file,
+      telefono,
+      process,
+      date_create: new Date(),
     };
 
     const result = await collection.insertOne(newUser);
@@ -56,18 +72,17 @@ async function register(req, res) {
     const token = jwt.sign({ id: newUser._id, rol: newUser.rol }, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
+
     res.status(201).json({ token });
   } catch (error) {
     console.error(`Error registering: ${error}`);
-    res.status(500).send(`Internal Server Error: ${error.message}`);
+    res.status(500).json({ message: `Internal Server Error: ${error.message}` });
   }
 }
 
-// Función para cerrar sesión
 async function logoutUser(req, res) {
-  // Eliminar el token de la sesión
   res.clearCookie('token');
-  res.redirect('/'); // Redireccionar al usuario a la página de inicio
+  res.redirect('/');
 }
 
 export { login, register, logoutUser };
