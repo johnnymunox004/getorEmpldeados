@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const authorize = (roles = []) => {
+export const authorize = ( ) => {
   return async (req, res, next) => {
     const authHeader = req.headers.authorization;
 

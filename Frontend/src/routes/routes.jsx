@@ -13,8 +13,15 @@ const AppRoutes = () => {
       <Route path="/" element={<LoginPage />} />
      
       <Route path='/aspirante-list' element={<AspiranteList/>}  />
+
       <Route path="*" element={<Page404 />} />
+
       <Route path="/home" element={<Home />} />
+
+
+      <Route path="/registro" element={<Home />} />
+
+
 
     </Routes>
   );
