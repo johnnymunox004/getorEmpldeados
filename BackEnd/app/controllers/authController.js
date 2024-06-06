@@ -5,11 +5,19 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const generateToken = (user) => {
+  return jwt.sign(
+    { id: user._id, rol: user.rol },
+    process.env.JWT_SECRET,
+    { expiresIn: '5h' }
+  );
+};
+
 async function login(req, res) {
-  const { email, password } = req.body;
+  const { user, password } = req.body;
 
   try {
-    const existingUser = await collection.findOne({ email });
+    const existingUser = await collection.findOne({ user });
     if (!existingUser) {
       return res.status(401).json({ message: 'User not found' });
     }
@@ -19,10 +27,7 @@ async function login(req, res) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ id: existingUser._id  }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    });
-
+    const token = generateToken(existingUser);
     res.json({ token });
   } catch (error) {
     console.error('Error logging in:', error);
@@ -31,21 +36,10 @@ async function login(req, res) {
 }
 
 async function register(req, res) {
-  const {
-    nombre,
-    email,
-    password,
-    rol = 'Usuario', // Default role if not provided
-    edad,
-    dept,
-    sexo,
-    file,
-    telefono,
-    process,
-  } = req.body;
+  const { user, password, email, name } = req.body;
 
   try {
-    const existingUser = await collection.findOne({ email });
+    const existingUser = await collection.findOne({ user });
     if (existingUser) {
       return res.status(409).json({ message: 'User already exists' });
     }
@@ -53,36 +47,28 @@ async function register(req, res) {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = {
-      nombre,
+      user,
+      name,
       email,
       password: hashedPassword,
-      rol,
-      edad,
-      dept,
-      sexo,
-      file,
-      telefono,
-      process,
-      date_create: new Date(),
+      rol: 'Usuario', // Rol por defecto
+      date_create: new Date()
     };
 
     const result = await collection.insertOne(newUser);
-    console.log("User created:", result);
-
-    const token = jwt.sign({ id: newUser._id, rol: newUser.rol }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    });
+    const token = generateToken(newUser);
 
     res.status(201).json({ token });
   } catch (error) {
     console.error(`Error registering: ${error}`);
-    res.status(500).json({ message: `Internal Server Error: ${error.message}` });
+    res.status(500).json({ message: 'Internal server error' });
   }
 }
 
 async function logoutUser(req, res) {
+  // Eliminar el token del cliente
   res.clearCookie('token');
-  res.redirect('/');
+  res.json({ message: 'Logged out successfully' });
 }
 
 export { login, register, logoutUser };

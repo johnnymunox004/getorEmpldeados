@@ -3,23 +3,32 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Page404 from '../pages/404';
 import LoginPage from '../pages/pageLogin';
-import { AspiranteList } from '../components/aspirantesList';
 import Home from  "../pages/home"
-
+import Dashboard from '../pages/dashboard';
+import DashboardListAspirant from '../pages/dashboardListaspirant';
+import DashboardListAspirantRegister from '../pages/registerAspirante';
+import DashboarEmpleados from '../pages/dashboardempleados';
+import NotificationsPage from "../pages/notificaciones";
+import CreateNotificationPage from '../pages/crearnotifi';
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
-     
-      <Route path='/aspirante-list' element={<AspiranteList/>}  />
-
+      <Route path="/login" element={<LoginPage />} />
       <Route path="*" element={<Page404 />} />
+      <Route path="/" element={<Home />} />
+      <Route path='/dashboard' element={<DashboardListAspirant/>}/>
 
-      <Route path="/home" element={<Home />} />
+      <Route path='/dashboard/list-aspirant' element={<DashboardListAspirant/>}/>
+      <Route path='/dashboard/list-empleados' element={<DashboarEmpleados/>}/>
+
+      <Route path='/register' element={<DashboardListAspirantRegister/>}/>
+
+      <Route path='/notificaciones' element={<NotificationsPage/>}/>
+      <Route path='/creaaenotificaciones' element={<CreateNotificationPage/>}/>
 
 
-      <Route path="/registro" element={<Home />} />
+
 
 
 

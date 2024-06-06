@@ -7,26 +7,22 @@ async function createAspirante(req, res) {
     identificacion,
     edad,
     sexo,
-    rol,
     file,
     email,
     telefono,
-    estado,
   } = req.body;
 
   try {
-   
-
     const newAspirante = {
       nombre,
       identificacion,
       edad,
       sexo,
-      rol,
+      rol: "aspirante", // Rol por defecto es "aspirante"
       file,
       email,
       telefono,
-      estado,
+      estado: "en proceso", // Estado por defecto es "en proceso"
       date_create: new Date(),
     };
 
@@ -37,6 +33,7 @@ async function createAspirante(req, res) {
     res.status(500).json({ message: "Error interno del servidor" });
   }
 }
+
 
 // Leer todos
 const getAllAspirantes = async (req, res) => {
