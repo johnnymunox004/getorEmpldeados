@@ -24,10 +24,12 @@ function GeneradorPDF({ id, nombre, telefono, correo, file, Identificación, Tel
     doc.text(`Teléfono: ${Teléfono}`, 14, 70);
     doc.text(`Sexo: ${sexo}`, 14, 80);
     doc.text(`Edad: ${edad}`, 14, 90);
+    doc.text(`Edad: ${file}`, 14, 100);
+
 
     // Agregar línea de separación
     doc.setLineWidth(0.5);
-    doc.line(14, 100, 200, 100);
+    doc.line(14, 110, 200, 110);
 
     // Información adicional
     doc.setFontSize(10);

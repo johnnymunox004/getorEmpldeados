@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useAspirantesStore from "../store/useAspirantesStore";
-import { Modal, Button, Card, TextInput, Label } from "flowbite-react";
+import { Modal, Button, Card, Label, TextInput } from "flowbite-react";
 import NavLinks from "../components/navLinks";
+import { CSVLink } from "react-csv";
 
 function DashboardListAspirant() {
   const {
@@ -90,6 +91,18 @@ function DashboardListAspirant() {
       </div>
     );
 
+  // Convertir los datos de los aspirantes en formato CSV
+  const csvData = aspirantes.map((aspirante) => ({
+    Nombre: aspirante.nombre,
+    Identificación: aspirante.identificacion,
+    Edad: aspirante.edad,
+    Sexo: aspirante.sexo,
+    Rol: aspirante.rol,
+    Email: aspirante.email,
+    Teléfono: aspirante.telefono,
+    Estado: aspirante.estado,
+  }));
+
   return (
     <div className="container-dashboard ">
       <div className="aside-dashboard">
@@ -100,11 +113,19 @@ function DashboardListAspirant() {
           <h1 className="text-2xl font-bold mb-4">Aspirantes</h1>
           <Button
             color="success"
-            className=" hidden"
+            className="mb-4"
             onClick={() => setShowModal(true)}
           >
             Agregar Aspirante
           </Button>
+          <CSVLink
+            data={csvData}
+            filename={"empleados.csv"}
+            className="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            target="_blank"
+          >
+            Descargar CSV
+          </CSVLink>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-4">
             {aspirantes
               .filter((aspirante) => aspirante.rol === "aspirante")
@@ -121,7 +142,7 @@ function DashboardListAspirant() {
                     <a
                       href={aspirante.file}
                       target="_blank"
-                      className=" text-blue-400"
+                      className="text-blue-400"
                       rel="noopener noreferrer"
                     >
                       {aspirante.file}
@@ -200,7 +221,6 @@ function DashboardListAspirant() {
               >
                 <option value="aspirante">Aspirante</option>
                 <option value="empleado">Empleado</option>
-
               </select>
             </div>
             <div className="mb-2">
