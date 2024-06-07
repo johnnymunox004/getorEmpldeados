@@ -6,7 +6,6 @@ import userRoutes from './userRoutes.js';
 import aspiranteRoutes from './aspiranteroute.js';
 import loginRoute from './authRoutes.js';
 import empleadosRoutes from './empleados.js';
-import routesDepartamentos from './departanmentos.js';
 import notifiRoutes from './notifiroutes.js';
 
 

@@ -31,6 +31,32 @@ const useUserStore = create((set) => ({
     }
   },
 
+  createUser: async (newUser) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      set({ message: "Token no disponible. Por favor, inicia sesión." });
+      return;
+    }
+
+    try {
+      set({ loading: true });
+      const response = await axios.post('http://localhost:1500/api/users', newUser, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+      set((state) => ({
+        userList: [...state.userList, response.data],
+        loading: false,
+        message: "Usuario creado con éxito",
+      }));
+    } catch (error) {
+      console.error('Error creating user:', error);
+      set({ error: "Error al crear el usuario. Por favor, intenta de nuevo.", loading: false });
+    }
+  },
+
   updateUser: async (id, updatedUser) => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -48,7 +74,7 @@ const useUserStore = create((set) => ({
 
       set((state) => ({
         userList: state.userList.map(user => user._id === id ? response.data : user),
-        message: "Usuario actualizado con éxito"
+        message: "Usuario actualizado con éxito",
       }));
     } catch (error) {
       console.error('Error updating user:', error);
@@ -73,14 +99,13 @@ const useUserStore = create((set) => ({
 
       set((state) => ({
         userList: state.userList.filter(user => user._id !== id),
-        message: "Usuario eliminado con éxito"
+        message: "Usuario eliminado con éxito",
       }));
     } catch (error) {
       console.error('Error deleting user:', error);
       set({ error: "Error al eliminar usuario. Por favor, intenta de nuevo." });
     }
   },
-
 
   loginUser: async (user, password) => {
     try {

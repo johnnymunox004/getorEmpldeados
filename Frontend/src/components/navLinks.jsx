@@ -40,6 +40,9 @@ const NavLinks = () => {
       >
         <FaBell className="text-2xl" />
       </Link>
+
+     
+      
     </div>
   );
 };

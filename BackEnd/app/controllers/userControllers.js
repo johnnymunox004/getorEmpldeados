@@ -3,31 +3,21 @@ import bcrypt from "bcryptjs";
 
 async function createUser(req, res) {
   const {
-    nombre,
+    user,
+    name,
     password,
-    process,
     email,
     rol,
-    edad,
-    dept,
-    sexo,
-    file,
-    telefono,
   } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = {
-      nombre,
+      user,
+      name,
       email,
       rol,
-      edad,
-      dept,
-      sexo,
-      file,
-      telefono,
-      process,
       password: hashedPassword,
       date_create: new Date(),
     };
@@ -71,19 +61,13 @@ async function updateUser(req, res) {
   try {
     const id = req.params.id;
     const updates = {
-      nombre: req.body.nombre,
+      user: req.body.user,
+      name: req.body.name,
       password: req.body.password
         ? await bcrypt.hash(req.body.password, 10)
         : undefined,
       email: req.body.email,
       rol: req.body.rol,
-      edad: req.body.edad,
-      dept: req.body.dept,
-      sexo: req.body.sexo,
-      file: req.body.file,
-      telefono: req.body.telefono,
-      process: req.body.process,
-
       date_create: req.body.date_create
         ? new Date(req.body.date_create)
         : undefined,

@@ -121,9 +121,7 @@ function DashboarEmpleados() {
       <div className="main-dashboard">
         <div className="p-4">
           <h1 className="text-2xl font-bold mb-4">Empleados</h1>
-          <Button color="success" onClick={() => setShowModal(true)}>
-            Agregar jefe departamento
-          </Button>
+   
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-4">
             {aspirantes
               .filter((aspirante) => aspirante.rol === "empleado")
