@@ -29,6 +29,7 @@ function DashboardListAspirant() {
   });
   const [editMode, setEditMode] = useState(false);
   const [currentId, setCurrentId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetchAspirantes();
@@ -103,6 +104,23 @@ function DashboardListAspirant() {
     Estado: aspirante.estado,
   }));
 
+  // Filtrar los aspirantes según el término de búsqueda
+  const filteredAspirantes = aspirantes.filter((aspirante) => {
+    const searchTermLower = searchTerm.toLowerCase();
+    return (
+      aspirante.nombre.toLowerCase().includes(searchTermLower) ||
+      aspirante.email.toLowerCase().includes(searchTermLower) ||
+      aspirante.identificacion.toLowerCase().includes(searchTermLower) ||
+      aspirante.edad.toString().includes(searchTermLower) ||
+      aspirante.telefono.includes(searchTermLower)||
+      aspirante.sexo.includes(searchTermLower)
+
+    );
+  }
+
+);
+  
+
   return (
     <div className="container-dashboard ">
       <div className="aside-dashboard">
@@ -111,6 +129,15 @@ function DashboardListAspirant() {
       <div className="main-dashboard">
         <div className="p-4">
           <h1 className="text-2xl font-bold mb-4">Aspirantes</h1>
+          <div className="mb-4">
+            <input
+              type="text"
+              placeholder="Buscar aspirante..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+            />
+          </div>
           <Button
             color="success"
             className="mb-4"
@@ -127,7 +154,7 @@ function DashboardListAspirant() {
             Descargar CSV
           </CSVLink>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-4">
-            {aspirantes
+            {filteredAspirantes
               .filter((aspirante) => aspirante.rol === "aspirante")
               .map((aspirante) => (
                 <Card key={aspirante._id}>
@@ -205,6 +232,23 @@ function DashboardListAspirant() {
                 onChange={handleInputChange}
                 required
               />
+            </div>
+                  <div className="flex flex-col mb-4">
+              <label htmlFor="sexo" className="mb-1 font-medium">
+                Sexo:
+              </label>
+              <select
+                id="sexo"
+                name="sexo"
+                value={formData.sexo}
+                onChange={handleInputChange}
+                required
+                className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              >
+                <option value="" className="hidden"></option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+              </select>
             </div>
 
             <div className="flex flex-col mb-4">
