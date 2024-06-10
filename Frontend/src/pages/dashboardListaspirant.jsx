@@ -4,6 +4,7 @@ import { Modal, Button, Card, Label, TextInput } from "flowbite-react";
 import NavLinks from "../components/navLinks";
 import { CSVLink } from "react-csv";
 import GeneradorPDF from "../components/GeneradorPDF";
+import LoadingSpinner from "../components/loadingSpinner";
 
 
 
@@ -77,7 +78,7 @@ function DashboardListAspirant() {
     deleteAspirante(id);
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div><LoadingSpinner/></div>;
   if (error)
     return (
       <div>

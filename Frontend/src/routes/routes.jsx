@@ -11,6 +11,7 @@ import NotificationsPage from "../pages/notificaciones";
 import CreateNotificationPage from '../pages/crearnotifi';
 import Dashboard from '../pages/dashboard';
 import DashboardUsuarios from '../pages/dashboardUsers';
+import Profile from '../pages/profile';
 
 const AppRoutes = () => {
   return (
@@ -30,6 +31,7 @@ const AppRoutes = () => {
       <Route path='/notificaciones' element={<NotificationsPage/>}/>
       <Route path='/creaaenotificaciones' element={<CreateNotificationPage/>}/>
       <Route path='/dashboard/usuarios' element={<DashboardUsuarios/>}/>
+      <Route path='/profile' element={<Profile/>}/>
 
 
 

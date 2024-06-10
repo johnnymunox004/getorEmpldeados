@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { isAdmin } from "../utils/getUserById"; // Import your decodeToken function
 import { FaUserAstronaut } from "react-icons/fa6";
+import { CgProfile } from "react-icons/cg";
 
 
 
@@ -60,6 +61,13 @@ const NavLinks = () => {
             Crear Notificación
             <FaBell className="text-2xl" />
           </Link>
+          <Link
+            to={"/profile"}
+            className="text-white hover:text-yellow-300 transition-colors duration-300 ml-96"
+          >
+            Perfil Del Usuario
+            <CgProfile  className="text-2xl" />
+          </Link>
         </>
       ) : (
         <>
@@ -76,6 +84,14 @@ const NavLinks = () => {
           >
             Crear Notificación
             <FaBell className="text-2xl" />
+          </Link>
+
+          <Link
+            to={"/profile"}
+            className="text-white hover:text-yellow-300 transition-colors duration-300"
+          >
+            Perfil Del Usuario
+            <CgProfile  className="text-2xl" />
           </Link>
 
         </>
