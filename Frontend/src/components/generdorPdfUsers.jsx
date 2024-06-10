@@ -1,7 +1,8 @@
 import React from 'react';
 import jsPDF from 'jspdf';
+import { Button } from 'flowbite-react';
 
-function GeneradorPDF({ id, nombre, telefono, correo,  Identificación, Teléfono, sexo, edad }) {
+function GeneradorUserPDF({ id, name, user, email, rol}) {
   const generarPDF = () => {
     const doc = new jsPDF();
     
@@ -17,33 +18,31 @@ function GeneradorPDF({ id, nombre, telefono, correo,  Identificación, Teléfon
     doc.setFontSize(12);
     doc.setTextColor(100);
     doc.setFont('helvetica', 'normal');
-    doc.text(`Nombre: ${nombre}`, 14, 30);
-    doc.text(`Teléfono: ${telefono}`, 14, 40);
-    doc.text(`Correo: ${correo}`, 14, 50);
-    doc.text(`Identificación: ${Identificación}`, 14, 60);
-    doc.text(`Teléfono: ${Teléfono}`, 14, 70);
-    doc.text(`Sexo: ${sexo}`, 14, 80);
-    doc.text(`Edad: ${edad}`, 14, 90);
+    doc.text(`Nombre: ${name}`, 14, 30);
+    doc.text(`UserName: ${user}`, 14, 40);
+    doc.text(`Correo: ${email}`, 14, 50);
+    doc.text(`Rol: ${rol}`, 14, 60);
+
 
     // Agregar línea de separación
     doc.setLineWidth(0.5);
-    doc.line(14, 100, 200, 100);
+    doc.line(14, 115, 200, 115);
 
     // Información adicional
     doc.setFontSize(10);
     doc.setTextColor(150);
     doc.text(`Este documento ha sido generado automáticamente.`, 14, 110);
-    doc.text(`Fecha de creación: ${new Date().toLocaleDateString()}`, 14, 116);
+    doc.text(`Fecha de creación: ${new Date().toLocaleDateString()}`, 14, 120);
 
     // Guardar el PDF con un nombre específico
-    doc.save(`PerfilUsuario${id}.pdf`);
+    doc.save(`PerfilUsuario${user}.pdf`);
   };
 
   return (
     <div>
-      <button className='bg-green-700 w-full h-12 p-3 flex justify-center text-white' onClick={generarPDF}>Generar PDF</button>
+      <Button color="success" className='mr-2 w-full' onClick={generarPDF}>Generar PDF</Button>
     </div>
   );
 }
 
-export default GeneradorPDF;
+export default GeneradorUserPDF;

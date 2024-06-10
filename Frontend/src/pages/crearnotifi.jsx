@@ -17,7 +17,7 @@ const CreateNotificationPage = () => {
     }
 
     try {
-      await axios.post('http://localhost:1500/api/notifi', { action, solicitud, quien });
+      await axios.post('https://back-gestor-empleados.onrender.com/api/notifi', { action, solicitud, quien });
       // Redireccionar a la página de notificaciones después de crear la notificación
       window.location.href = '/dashboard/list-empleados';
     } catch (error) {

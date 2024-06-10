@@ -3,6 +3,9 @@ import useAspirantesStore from "../store/useAspirantesStore";
 import { Modal, Button, Card, Label, TextInput } from "flowbite-react";
 import NavLinks from "../components/navLinks";
 import { CSVLink } from "react-csv";
+import GeneradorPDF from "../components/GeneradorPDF";
+
+
 
 function DashboardListAspirant() {
   const {
@@ -122,13 +125,14 @@ function DashboardListAspirant() {
   
 
   return (
-    <div className="container-dashboard ">
+    <div className="container-dashboard">
+     
       <div className="aside-dashboard">
         <NavLinks />
       </div>
       <div className="main-dashboard">
         <div className="p-4">
-          <h1 className="text-2xl font-bold mb-4">Aspirantes</h1>
+          <h1 className="text-2xl font-bold mt-10 mb-4">Aspirantes</h1>
           <div className="mb-4">
             <input
               type="text"
@@ -185,6 +189,17 @@ function DashboardListAspirant() {
                   >
                     Editar
                   </Button>
+                  <GeneradorPDF
+                    id={aspirante._id}
+                    nombre={aspirante.nombre}
+                    telefono={aspirante.telefono}
+                    correo={aspirante.email}
+                    file={aspirante.file}
+                    Identificación={aspirante.identificacion}
+                    Teléfono={aspirante.telefono}
+                    sexo={aspirante.sexo}
+                    edad={aspirante.edad}
+                  />
                   <Button
                     color="failure"
                     onClick={() => handleDelete(aspirante._id)}

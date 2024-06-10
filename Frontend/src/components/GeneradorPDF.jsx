@@ -1,5 +1,6 @@
 import React from 'react';
 import jsPDF from 'jspdf';
+import { Button } from 'flowbite-react';
 
 function GeneradorPDF({ id, nombre, telefono, correo, file, Identificación, Teléfono, sexo, edad }) {
   const generarPDF = () => {
@@ -29,13 +30,13 @@ function GeneradorPDF({ id, nombre, telefono, correo, file, Identificación, Tel
 
     // Agregar línea de separación
     doc.setLineWidth(0.5);
-    doc.line(14, 110, 200, 110);
+    doc.line(14, 115, 200, 115);
 
     // Información adicional
     doc.setFontSize(10);
     doc.setTextColor(150);
     doc.text(`Este documento ha sido generado automáticamente.`, 14, 110);
-    doc.text(`Fecha de creación: ${new Date().toLocaleDateString()}`, 14, 116);
+    doc.text(`Fecha de creación: ${new Date().toLocaleDateString()}`, 14, 120);
 
     // Guardar el PDF con un nombre específico
     doc.save(`PerfilUsuario${id}.pdf`);
@@ -43,7 +44,7 @@ function GeneradorPDF({ id, nombre, telefono, correo, file, Identificación, Tel
 
   return (
     <div>
-      <button className='bg-green-700 w-full h-12 p-3 flex justify-center text-white' onClick={generarPDF}>Generar PDF</button>
+      <Button color="success" className='mr-2 w-full' onClick={generarPDF}>Generar PDF</Button>
     </div>
   );
 }

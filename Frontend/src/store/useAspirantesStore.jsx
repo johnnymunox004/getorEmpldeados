@@ -10,7 +10,7 @@ const useAspirantesStore = create((set) => ({
     set({ loading: true });
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get("http://localhost:1500/api/aspirantes", {
+      const response = await axios.get("https://back-gestor-empleados.onrender.com/api/aspirantes", {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
@@ -26,7 +26,7 @@ const useAspirantesStore = create((set) => ({
     set({ loading: true });
     try {
       const token = localStorage.getItem('token');
-      await axios.post("http://localhost:1500/api/aspirantes", newAspirante, {
+      await axios.post("https://back-gestor-empleados.onrender.com/api/aspirantes", newAspirante, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
@@ -42,7 +42,7 @@ const useAspirantesStore = create((set) => ({
     set({ loading: true });
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:1500/api/aspirantes/${id}`, updatedAspirante, {
+      await axios.put(`https://back-gestor-empleados.onrender.com/api/aspirantes/${id}`, updatedAspirante, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,
@@ -63,7 +63,7 @@ const useAspirantesStore = create((set) => ({
     set({ loading: true });
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:1500/api/aspirantes/${id}`, {
+      await axios.delete(`https://back-gestor-empleados.onrender.com/api/aspirantes/${id}`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,

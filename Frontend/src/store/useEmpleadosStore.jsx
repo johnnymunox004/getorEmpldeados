@@ -18,7 +18,7 @@ const useEmpleadoStore = create((set) => ({
 
     try {
       set({ loading: true });
-      const response = await axios.get('http://localhost:1500/api/empleados', {
+      const response = await axios.get('https://back-gestor-empleados.onrender.com/api/empleados', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -39,7 +39,7 @@ const useEmpleadoStore = create((set) => ({
     }
 
     try {
-      const response = await axios.post('http://localhost:1500/api/empleados', newEmpleado, {
+      const response = await axios.post('https://back-gestor-empleados.onrender.com/api/empleados', newEmpleado, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -63,7 +63,7 @@ const useEmpleadoStore = create((set) => ({
     }
 
     try {
-      const response = await axios.put(`http://localhost:1500/api/empleados/${id}`, updatedEmpleado, {
+      const response = await axios.put(`https://back-gestor-empleados.onrender.com/api/empleados/${id}`, updatedEmpleado, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -88,7 +88,7 @@ const useEmpleadoStore = create((set) => ({
     }
 
     try {
-      await axios.delete(`http://localhost:1500/api/empleados/${id}`, {
+      await axios.delete(`https://back-gestor-empleados.onrender.com/api/empleados/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -107,7 +107,7 @@ const useEmpleadoStore = create((set) => ({
 
   loginUser: async (user, password) => {
     try {
-      const response = await axios.post('http://localhost:1500/api/login', { user, password });
+      const response = await axios.post('https://back-gestor-empleados.onrender.com/api/login', { user, password });
       const newToken = response.data.token;
       localStorage.setItem('token', newToken);
       set({ token: newToken, isLoggedIn: true });
