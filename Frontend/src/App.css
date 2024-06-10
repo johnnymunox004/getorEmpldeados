@@ -40,11 +40,14 @@
   box-shadow: 5px 5px 10px 1px #000000;
   
 }
-  .main-dashboard{
-    margin-top: 50px;
+.main-dashboard {
+  margin-top: 50px;
   grid-column: 1 / 3;
   height: fit-content;
-    
+  background-image: url('../public/vite.svg');
+  background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center; /* Centra la imagen en el contenedor */
   overflow-x: auto;
 }
 .footer-dashbord{
