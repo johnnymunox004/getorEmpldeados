@@ -90,12 +90,7 @@ const NotificationsPage = () => {
             />
           </div>
           <div className="footer-dashboard bg-gray-200 p-4 rounded-lg mt-4">
-            <Link
-              to="/dashboard/list-empleados"
-              className="text-2xl flex justify-center text-blue-600 hover:text-blue-800"
-            >
-              Dashboard
-            </Link>
+
           </div>
         </div>
       </div>

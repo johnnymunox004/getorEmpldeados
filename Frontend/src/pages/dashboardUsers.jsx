@@ -138,7 +138,7 @@ function DashboardUsuarios() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-4">
             {usuarios.map((user) => (
-              <Card key={user._id}>
+                <Card key={user._id}>
                 <h2 className="text-xl font-bold">{user.name}</h2>
                 <p>User: {user.user}</p>
                 <p>Email: {user.email}</p>
@@ -221,16 +221,18 @@ function DashboardUsuarios() {
                 required
               />
             </div>
-            <div className="mb-2">
-              <Label htmlFor="rol" value="Rol" />
-              <TextInput
+            <select
                 id="rol"
                 name="rol"
                 value={formData.rol}
                 onChange={handleInputChange}
                 required
-              />
-            </div>
+                className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              >
+                <option value="Usuario">Usuario</option>
+                <option value="Administrador">Administrador</option>
+              </select>
+            
             <Button color="success" type="submit">
               {editMode ? "Actualizar" : "Crear"}
             </Button>

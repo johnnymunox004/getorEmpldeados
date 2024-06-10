@@ -94,12 +94,7 @@ const CreateNotificationPage = () => {
               </button>
             </form>
             <div className="mt-4">
-              <Link
-                to="/dashboard/list-empleados"
-                className="text-blue-500 hover:underline"
-              >
-                Dashboard
-              </Link>
+
             </div>
           </div>
         </div>
