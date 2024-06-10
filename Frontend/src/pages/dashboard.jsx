@@ -11,6 +11,7 @@ function Dashboard() {
         <NavLinks/>
       </div>
       <div className="main-dashboard">
+        
       </div>
     
     </div>
