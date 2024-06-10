@@ -92,7 +92,7 @@ function DashboardUsuarios() {
 
   // Filtrar usuarios según el rol del usuario
   const usuarios = userIsAdmin
-    ? userList.filter((user) => user.rol != "" )
+    ? userList.filter((user) => user.rol != "wert" )
     : userList.filter(
         (user) =>
           user.rol === "empleado" &&
@@ -178,66 +178,72 @@ function DashboardUsuarios() {
           {editMode ? "Editar Usuario" : "Agregar Usuario"}
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-2">
-              <Label htmlFor="user" value="User" />
-              <TextInput
-                id="user"
-                name="user"
-                value={formData.user}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="mb-2">
-              <Label htmlFor="name" value="Name" />
-              <TextInput
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="mb-2">
-              <Label htmlFor="password" value="Password" />
-              <TextInput
-                id="password"
-                name="password"
-                type="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required={!editMode} // Only required when creating a new user
-              />
-            </div>
+  <form onSubmit={handleSubmit}>
+    <div className="mb-2">
+      <Label htmlFor="user" value="User" />
+      <TextInput
+        id="user"
+        name="user"
+        value={formData.user}
+        onChange={handleInputChange}
+        required
+      />
+    </div>
+    <div className="mb-2">
+      <Label htmlFor="name" value="Name" />
+      <TextInput
+        id="name"
+        name="name"
+        value={formData.name}
+        onChange={handleInputChange}
+        required
+      />
+    </div>
 
-            <div className="mb-2">
-              <Label htmlFor="email" value="Email" />
-              <TextInput
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <select
-                id="rol"
-                name="rol"
-                value={formData.rol}
-                onChange={handleInputChange}
-                required
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-              >
-                <option value="Usuario">Usuario</option>
-                <option value="Administrador">Administrador</option>
-              </select>
-            
-            <Button color="success" type="submit">
-              {editMode ? "Actualizar" : "Crear"}
-            </Button>
-          </form>
-        </Modal.Body>
+    <div className="mb-2">
+      <Label htmlFor="email" value="Email" />
+      <TextInput
+        id="email"
+        name="email"
+        value={formData.email}
+        onChange={handleInputChange}
+        required
+      />
+    </div>
+
+    <select
+      id="rol"
+      name="rol"
+      value={formData.rol}
+      onChange={handleInputChange}
+      required
+      className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+    >
+      <option value="#">Seleccione El Rol</option>
+      <option value="Usuario">Usuario</option>
+      <option value="Administrador">Administrador</option>
+    </select>
+
+    {!editMode && ( // Only show password field if not in edit mode
+      <div className="mb-2">
+        <Label htmlFor="password" value="Password" />
+        <TextInput
+          id="password"
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleInputChange}
+          required // Required when creating a new user
+        />
+      </div>
+    )}
+
+    <Button color="success" type="submit">
+      {editMode ? "Actualizar" : "Crear"}
+    </Button>
+  </form>
+</Modal.Body>
+
       </Modal>
     </div>
   );
