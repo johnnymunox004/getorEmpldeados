@@ -101,3 +101,13 @@ const NavLinks = () => {
 };
 
 export default NavLinks;
+
+
+
+// git add .
+
+
+// git commit -m "97/100"
+
+
+// git push

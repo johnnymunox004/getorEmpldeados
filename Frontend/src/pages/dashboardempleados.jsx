@@ -197,7 +197,7 @@ function DashboarEmpleados() {
                     </a>
                   </p>
                   <p>Teléfono: {aspirante.telefono}</p>
-                  <p>Estado: {aspirante.estado}</p>
+                  <p>Estado: empleado</p>
                   <div className="flex justify-between mt-2">
                     <Button
                       onClick={() => handleEdit(aspirante)}
