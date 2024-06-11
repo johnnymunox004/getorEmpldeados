@@ -36,9 +36,9 @@ export default function Home() {
       
    
       <nav className="w-22 bg-black h-20 p-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50">
-  <div className="text-5xl text-black font-bold">Tuttle</div>
+  <div className="text-5xl text-white font-bold">Tuttle</div>
   <div className="flex space-x-4">
-    <Link to='/login' className="text-2xl text-black hover:text-gray-300 transition-colors duration-200">
+    <Link to='/login' className="text-2xl text-white hover:text-gray-300 transition-colors duration-200">
       Inicio
     </Link>
   </div>
