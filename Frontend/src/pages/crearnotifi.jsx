@@ -35,7 +35,7 @@ const CreateNotificationPage = () => {
         <NavLinks />
       </div>
       <div className="main-dashboard">
-        <div className="flex justify-center mt-10 h-screen">
+        <div className="flex justify-center mt-10 h-56">
           <div className="bg-white rounded-lg p-6 w-96 shadow-md">
             <h2 className="text-2xl font-bold mb-4">Crear Notificación</h2>
             {error && <p className="text-red-500 mb-4">{error}</p>}
