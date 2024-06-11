@@ -198,7 +198,7 @@ function DashboarEmpleados() {
                   </p>
                   <p>Teléfono: {aspirante.telefono}</p>
                   <p>Estado: empleado</p>
-                  <div className="flex flex-col justify-between mt-2">
+                  <div className="flex flex-col gap-4 mt-2">
                     <Button
                       onClick={() => handleEdit(aspirante)}
                       className="mr-2"
