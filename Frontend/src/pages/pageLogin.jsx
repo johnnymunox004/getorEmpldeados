@@ -19,6 +19,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
+    setShowMissingFields(false); // Reset the missing fields notification
     if (!user || !password) {
       setShowMissingFields(true); // Mostrar la notificación de campos faltantes
       return;
@@ -45,12 +46,12 @@ const LoginPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
+    setShowMissingFields(false); // Reset the missing fields notification
 
     if (!user || !name || !email || !password || !confirmPassword) {
       setShowMissingFields(true); // Mostrar la notificación de campos faltantes
       return;
     }
-
 
     if (password !== confirmPassword) {
       setError('Passwords do not match');
@@ -120,11 +121,7 @@ const LoginPage = () => {
               value={password} 
               onChange={(e) => setPassword(e.target.value)} 
               required 
-              
             />
-                  {showMissingFields && (
-            <div className="mb-4 text-red-500">Please complete all fields.</div>
-          )}
           </div>
           {isRegistering && (
             <div className="mb-4">
@@ -138,6 +135,9 @@ const LoginPage = () => {
                 required 
               />
             </div>
+          )}
+          {showMissingFields && (
+            <div className="mb-4 text-red-500">Please complete all fields.</div>
           )}
           {error && <p className="text-red-500 mb-4">{error}</p>}
           <div className="mb-4">
