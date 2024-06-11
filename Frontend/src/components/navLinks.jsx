@@ -52,7 +52,7 @@ const NavLinks = () => {
             className="text-white hover:text-yellow-300 transition-colors duration-300"
           >
             Notificaciones
-            <FaRegBell className="text-2xl" />
+            <FaBell className="text-2xl" />
           </Link>
 
           <Link
@@ -60,7 +60,7 @@ const NavLinks = () => {
             className="text-white hover:text-yellow-300 transition-colors duration-300"
           >
             Crear Notificación
-            <FaBell className="text-2xl" />
+            <FaRegBell className="text-2xl" />
           </Link>
           <Link
             to={"/profile"}
