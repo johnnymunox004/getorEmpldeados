@@ -61,21 +61,20 @@ function DashboardListAspirantRegister() {
     setEditMode(false);
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div></div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="container- w-96 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
-      {" "}
-      <div className="header-dashboard col-span-3 md:col-span-1 bg-blue-500  py-4 px-6 rounded-lg">
-        <h1 className="text-2xl font-bold flex justify-center">
-          formulario aspirante
+    <div className="container w-11/12 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="header-dashboard col-span-3 md:col-span-1 bg-blue-600 py-4 px-6 rounded-lg shadow-lg">
+        <h1 className="text-3xl font-bold text-center text-white">
+          Formulario Aspirante
         </h1>
       </div>
-      <div className="main-dashboard col-span-3 md:col-span-2 p-6 rounded-lg">
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="main-dashboard col-span-3 md:col-span-2 p-6 rounded-lg shadow-lg bg-white">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex flex-col mb-4">
-            <label htmlFor="nombre" className="mb-1 font-medium">
+            <label htmlFor="nombre" className="mb-2 font-semibold text-gray-700">
               Nombre:
             </label>
             <input
@@ -85,11 +84,11 @@ function DashboardListAspirantRegister() {
               value={formData.nombre}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div className="flex flex-col mb-4">
-            <label htmlFor="identificacion" className="mb-1 font-medium">
+            <label htmlFor="identificacion" className="mb-2 font-semibold text-gray-700">
               Identificación:
             </label>
             <input
@@ -99,11 +98,11 @@ function DashboardListAspirantRegister() {
               value={formData.identificacion}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div className="flex flex-col mb-4">
-            <label htmlFor="edad" className="mb-1 font-medium">
+            <label htmlFor="edad" className="mb-2 font-semibold text-gray-700">
               Edad:
             </label>
             <input
@@ -113,11 +112,11 @@ function DashboardListAspirantRegister() {
               value={formData.edad}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div className="flex flex-col mb-4">
-            <label htmlFor="sexo" className="mb-1 font-medium">
+            <label htmlFor="sexo" className="mb-2 font-semibold text-gray-700">
               Sexo:
             </label>
             <select
@@ -126,16 +125,15 @@ function DashboardListAspirantRegister() {
               value={formData.sexo}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option value="" className=" hidden"></option>
+              <option value="" className="hidden"></option>
               <option value="masculino">Masculino</option>
               <option value="femenino">Femenino</option>
             </select>
           </div>
-
           <div className="flex flex-col mb-4">
-            <label htmlFor="file" className="mb-1 font-medium">
+            <label htmlFor="file" className="mb-2 font-semibold text-gray-700">
               File:
             </label>
             <input
@@ -145,11 +143,11 @@ function DashboardListAspirantRegister() {
               value={formData.file}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div className="flex flex-col mb-4">
-            <label htmlFor="email" className="mb-1 font-medium">
+            <label htmlFor="email" className="mb-2 font-semibold text-gray-700">
               Email:
             </label>
             <input
@@ -159,11 +157,11 @@ function DashboardListAspirantRegister() {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div className="flex flex-col mb-4">
-            <label htmlFor="telefono" className="mb-1 font-medium">
+            <label htmlFor="telefono" className="mb-2 font-semibold text-gray-700">
               Teléfono:
             </label>
             <input
@@ -173,24 +171,25 @@ function DashboardListAspirantRegister() {
               value={formData.telefono}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             {editMode ? "Actualizar" : "Crear"}
           </button>
         </form>
       </div>
-      <div className="footer-dashboard col-span-3 bg-gray-200 p-4 rounded-lg">
-        <Link to="/" className="text-2xl  flex justify-center  ">
+      <div className="footer-dashboard col-span-3 bg-gray-200 p-4 rounded-lg shadow-lg">
+        <Link to="/" className="text-2xl font-semibold text-center text-blue-500 hover:text-blue-600">
           Inicio
         </Link>
       </div>
     </div>
   );
+  
 }
 
 export default DashboardListAspirantRegister;
