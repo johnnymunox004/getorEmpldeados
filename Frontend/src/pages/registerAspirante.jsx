@@ -65,7 +65,7 @@ function DashboardListAspirantRegister() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="container w-11/12 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className=" w-11/12 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
       <div className="header-dashboard col-span-3 md:col-span-1 bg-blue-600 py-4 px-6 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold text-center text-white">
           Formulario Aspirante
