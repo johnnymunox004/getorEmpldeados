@@ -7,6 +7,7 @@ import React from "react";
 import { isAdmin } from "../utils/getUserById"; // Import your decodeToken function
 import { FaUserAstronaut } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
+import { FaRegBell } from "react-icons/fa";
 
 
 
@@ -51,7 +52,7 @@ const NavLinks = () => {
             className="text-white hover:text-yellow-300 transition-colors duration-300"
           >
             Notificaciones
-            <FaBell className="text-2xl" />
+            <FaRegBell className="text-2xl" />
           </Link>
 
           <Link
@@ -83,7 +84,7 @@ const NavLinks = () => {
             className="text-white hover:text-yellow-300 transition-colors duration-300"
           >
             Crear Notificación
-            <FaBell className="text-2xl" />
+            <FaRegBell className="text-2xl" />
           </Link>
 
           <Link
