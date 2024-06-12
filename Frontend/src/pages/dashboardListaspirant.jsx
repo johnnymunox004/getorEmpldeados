@@ -133,7 +133,7 @@ function DashboardListAspirant() {
       </div>
       <div className="main-dashboard">
         <div className="p-4">
-          <h1 className="text-2xl font-bold mt-10 mb-4">Aspirantes</h1>
+          <h1 className="text-2xl font-bold mt-6 mb-4">Aspirantes</h1>
           <div className="mb-4">
             <input
               type="text"
